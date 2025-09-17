@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>添加用户</title>
+		<!-- 新 Bootstrap5 核心 CSS 文件 -->
+		<link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/css/bootstrap.min.css">
+		 
+		<!-- 最新的 Bootstrap5 核心 JavaScript 文件 -->
+		<script src="https://cdn.staticfile.net/twitter-bootstrap/5.1.1/js/bootstrap.bundle.min.js"></script>
+		<script>
+			
+		function errorclose()
+		{
+			let error=document.querySelectorAll('.error_message');
+			error.forEach(el=>el.textContent="");
+		}
+		
+		 function vaildataform(event)
+		 {	
+			
+			 errorclose();
+			 let isPass = true;
+			 //名字验证
+			  event.preventDefault();
+			 let name=document.getElementById("name").value;
+			 let nameReg=/^[\u4e00-\u9fa5\w]{2,10}$/;
+			 if(!nameReg.test(name))
+			 {
+				document.getElementById("errorname").innerHTML="名字太短或太长！";
+				isPass=false;
+			 }
+			 //手机号验证
+			 let tele=document.getElementById("telephone").value;
+			 let teleReg=/^[0-9]{11}$/;
+			 if(!teleReg.test(tele))
+			 {
+			 	document.getElementById("errortele").innerHTML="手机号格式不正确！";
+				isPass=false;
+			 }
+			  if (isPass) {
+			         // 验证通过，手动提交表单
+			         event.target.submit(); 
+			     }
+			     // 验证失败，不提交（无需额外操作，因已阻止默认行为）
+			     return isPass;
+			 
+			 
+			 }
+			
+		</script>
+		<style>
+		.error_message{
+			color: red;
+		}
+		
+		label.xrequired::after{
+			content: ' *';
+			color: red;
+		}
+		.registration-form {
+			max-width: 500px;
+			width: 100%;
+		}
+					/* 1. 华丽背景效果 - 多层渐变+纹理 */
+					body {
+						/* 主渐变：深紫到宝蓝，营造华丽感 */
+						background: linear-gradient(135deg, #2c003e 0%, #05004e 40%, #002a5c 100%);
+						
+						/* 叠加网格纹理，增加精致感 */
+						background-image: 
+							linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+							linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+							/* 光效元素 */
+							radial-gradient(circle at 30% 20%, rgba(192, 108, 243, 0.15) 0%, transparent 40%),
+							radial-gradient(circle at 70% 60%, rgba(75, 192, 243, 0.15) 0%, transparent 40%);
+						
+						background-size: 30px 30px, 30px 30px, 100% 100%, 100% 100%;
+						background-attachment: fixed;
+						min-height: 100vh;
+						margin: 0;
+						padding: 20px;
+						overflow-x: hidden;
+					}
+		
+					/* 2. 装饰性光效元素 */
+					body::before {
+						content: '';
+						position: fixed;
+						top: -20%;
+						right: -10%;
+						width: 40%;
+						height: 40%;
+						background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+						border-radius: 50%;
+						z-index: 0;
+					}
+		
+					body::after {
+						content: '';
+						position: fixed;
+						bottom: -15%;
+						left: -10%;
+						width: 35%;
+						height: 35%;
+						background: radial-gradient(circle, rgba(147, 112, 219, 0.1) 0%, transparent 70%);
+						border-radius: 50%;
+						z-index: 0;
+					}
+		
+					/* 3. 表单容器 - 华丽质感 */
+					.form-container {
+						background: rgba(255, 255, 255, 0.96);
+						border-radius: 16px;
+						box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 
+									0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+						padding: 35px;
+						margin: 40px auto;
+						max-width: 800px;
+						position: relative;
+						z-index: 1;
+						overflow: hidden;
+					}
+		
+					/* 容器顶部光效条 */
+					.form-container::before {
+						content: '';
+						position: absolute;
+						top: 0;
+						left: 0;
+						right: 0;
+						height: 4px;
+						background: linear-gradient(90deg, #9370db, #4158d0, #c850c0, #ffcc70);
+						background-size: 400% 400%;
+						animation: gradient 15s ease infinite;
+					}
+		
+					@keyframes gradient {
+						0% { background-position: 0% 50%; }
+						50% { background-position: 100% 50%; }
+						100% { background-position: 0% 50%; }
+					}
+		
+					/* 4. 标题样式 */
+					.form-title {
+						color: #2c3e50;
+						font-weight: 700;
+						margin-bottom: 30px;
+						padding-bottom: 20px;
+						border-bottom: 1px solid #f1f3f5;
+						position: relative;
+					}
+		
+					.form-title::after {
+						content: '';
+						position: absolute;
+						width: 60px;
+						height: 3px;
+						background: linear-gradient(90deg, #9370db, #4158d0);
+						bottom: -1px;
+						left: 0;
+					}
+		
+					/* 5. 表单元素样式优化 */
+					.form-label {
+						color: #34495e;
+						font-weight: 500;
+						font-size: 15px;
+					}
+					.form-control, select {
+						border-radius: 10px;
+						border: 1px solid #dee2e6;
+						transition: all 0.3s ease;
+						padding: 12px 15px;
+						background: rgba(255, 255, 255, 0.8);
+					}
+					.form-control:focus, select:focus {
+						border-color: #9370db;
+						box-shadow: 0 0 0 4px rgba(147, 112, 219, 0.1);
+						outline: none;
+						transform: translateY(-1px);
+					}
+		
+					/* 6. 按钮样式 - 华丽渐变 */
+					.layui-btn-fluid {
+						background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+						border-radius: 10px;
+						padding: 14px 0;
+						font-size: 16px;
+						font-weight: 500;
+						transition: all 0.3s ease;
+						border: none;
+						position: relative;
+						overflow: hidden;
+					}
+		
+					.layui-btn-fluid::before {
+						content: '';
+						position: absolute;
+						top: 0;
+						left: -100%;
+						width: 100%;
+						height: 100%;
+						background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+						transition: 0.5s;
+					}
+		
+					.layui-btn-fluid:hover {
+						transform: translateY(-3px);
+						box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+					}
+		
+					.layui-btn-fluid:hover::before {
+						left: 100%;
+					}
+		
+					/* 7. 其他样式调整 */
+					#birthday {
+						width: 100px;
+						margin-left: -28px;
+					}
+					.mb-2 {
+						margin-bottom: 1rem !important;
+					}
+					.layui-col-space16 > div {
+						margin-bottom: 18px;
+					}
+					.layui-form-switch {
+						background-color: rgba(147, 112, 219, 0.3);
+					}
+					.layui-form-onswitch {
+						background-color: #9370db;
+					}
+				</style>
+			
+		
+		 <link href="//unpkg.com/layui@2.11.6/dist/css/layui.css" rel="stylesheet">
+	</head>
+	<body class="layui-padding-3">
+		<div class="form-container">
+			<h1 class="form-title">添加配送员信息</h1>
+			<form action="receive.html" onsubmit=" return vaildataform(event)">
+				<div class="container registration-form">
+					
+					<div class="mb-3">
+						<label for="name" class="form-label xrequired">姓名</label>
+						<input type="text" class="form-control" id="name" placeholder="请输入姓名">
+						<span id="errorname" class="error_message"></span>
+					</div>
+				<div class="mb-2">
+				性别<input checked type="radio" name="gender"/>男
+							<input type="radio" name="gender"/>女
+                </div>
+
+				<div class="mb-3">
+					<label for="telephone" class="form-label xrequired">手机号</label>
+					<input type="text" class="form-control" id="telephone" placeholder="请输入11位手机号">
+					<span id="errortele" class="error_message"></span>
+				</div>
+		
+		<div class="layui-form layui-row layui-col-space16">
+		  <div class="layui-col-md6">
+			  <div class="mt-1">
+			  籍贯
+			  <select>
+		      <option value="">国家</option>
+		      <option value="AAA">中国</option>
+		      <option value="BBB">日本</option>
+		      <option value="CCC">韩国</option>
+		      <option value="DDD">卡塔尔</option>
+		      <option value="EEE">沙特阿拉伯</option>
+		      <option value="FFF">新加坡</option>
+		      <option value="GGG">美国</option>
+		      <option value="HHH">加拿大</option>
+		      <option value="III">阿根廷</option>
+		      <option value="JJJ">巴西</option>
+		      <option value="KKK">法国</option>
+		      <option value="LLL">德国</option>
+		      <option value="MMM">西班牙</option>
+		      <option value="NNN">葡萄牙</option>
+		      <option value="OOO">意大利</option>
+		      <option value="PPP">英国</option>
+		      <option value="QQQ">克罗地亚</option>
+		      <option value="RRR">俄罗斯</option>
+		    </select>
+		  </div>
+		  <div class="layui-col-md6">
+		  <select>
+		  <option value="">省</option>
+		  <option value="AAA">北京市</option>
+		  <option value="BBB">天津市</option>
+		  <option value="CCC">河北省</option>
+		  <option value="DDD">山西省</option>
+		  <option value="EEE">上海市</option>
+		  <option value="FFF">江苏省</option>
+		  <option value="GGG">浙江省</option>
+		  <option value="HHH">重庆市</option>
+		  <option value="III">四川省</option>
+		  <option value="JJJ">陕西省</option>
+		  <option value="KKK">香港特别行政区</option>
+		  <option value="LLL">澳门特别行政区</option>
+		  <option value="MMM">台湾省</option>
+		</select>
+		  </div>
+		  <div class="layui-col-md6">
+		  <select>
+		  <option value="">市</option>
+		  <option value="AAA">北京市</option>
+		  <option value="BBB">天津市</option>
+		  <option value="CCC">上海市</option>
+		  <option value="DDD">重庆市</option>
+		  <option value="EEE">太原市</option>
+		  <option value="FFF">大同市</option>
+		  <option value="GGG">阳泉市</option>
+		  <option value="HHH">晋城市</option>
+		  <option value="III">运城市</option>
+		  <option value="JJJ">忻州市</option>
+		  <option value="KKK">杭州市</option>
+		  <option value="LLL">南京市</option>
+		  <option value="MMM">东京</option>
+		  <option value="NNN">巴黎</option>
+		  <option value="OOO">伦敦</option>
+		  <option value="PPP">莫斯科</option>
+		  <option value="QQQ">马德里</option>
+		  <option value="RRR">巴塞罗那</option>
+		</select>
+		  </div>
+		  <div class="layui-col-md6">
+		  <select>
+		  <option value="">县（区）</option>
+		  <option value="AAA">盂县</option>
+		  <option value="BBB">陵川县</option>
+		  <option value="CCC">平定县</option>
+		  <option value="CCC">尖草坪区</option>
+		</select>
+		  </div>
+		  <div class="layui-col-md6">
+		  <select>
+		    <option value="">街道</option>
+		    <option value="AAA">上兰街道</option>
+		    <option value="BBB">学院路</option>
+		    <option value="CCC">迎泽街道</option>
+		  </select>
+		</div>
+		</div>
+		</div>
+		<div class="layui-form">
+		  <div class="layui-form-item">
+		    <div class="layui-inline">
+				<div class="mb-3 mt-3">
+		      <label class="layui-form-label" id="birthday">出生日期</label>
+		      <div class="layui-input-inline">
+		        <input type="text" class="layui-input" id="ID-laydate-demo" placeholder="请选择您的出生日期">
+		      </div>
+		    </div>
+			</div>
+			</div>
+			</div>
+			
+			<div class="layui-form layui-row layui-col-space16">
+			  <div class="layui-col-md6">
+				  <div class="mt-1">
+				  职务 
+			    <select>
+			      <option value="">请选择您的职务</option>
+			      <option value="AAA">配送站经理</option>
+			      <option value="BBB">配送员</option>
+			</select>
+			</div>
+			</div>
+			</div>
+			
+			<div class="layui-form layui-row layui-col-space16">
+			  <div class="layui-col-md6">
+				  <div class="mt-1">
+				  是否缴纳保险
+			    <select>
+			      <option value="">请选择</option>
+			      <option value="AAA">是</option>
+			      <option value="BBB">否</option>
+				  
+			</select>
+			</div>
+			</div>
+			</div>
+			<br>
+			<div class="layui-form">    
+            用户状态<input type="checkbox" name="BBB" title="ON|OFF" lay-skin="switch" checked> 
+			</div>
+			<br>
+			<div class="layui-btn-container">
+				<div style="width: 380px;">
+				  <button type="submit" class="layui-btn layui-btn-fluid" >提交</button>
+				</div>
+			
+			<script>
+			layui.use(function(){
+			  var laydate = layui.laydate;
+			  // 渲染
+			  laydate.render({
+			    elem: '#ID-laydate-demo'
+			  });
+			  });
+			 </script>
+			 
+			
+			  
+
+		<script src="//unpkg.com/layui@2.11.6/dist/layui.js"></script>
+		</form>
+		
+	</body>
+</html>

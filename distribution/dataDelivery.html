@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>配送数据</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+      <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+      <style>
+          body {
+              margin: 0;
+              padding: 20px;
+              background-color: #f5f5f5;
+          }
+          #chart-container {
+              width: 100%;
+              height: 500px;
+              background-color: white;
+              border-radius: 8px;
+              box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+          }
+          .title {
+              text-align: center;
+              color: #333;
+              margin-bottom: 20px;
+          }
+      </style>
+  <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+  <link href="//unpkg.com/layui@2.11.6/dist/css/layui.css" rel="stylesheet">
+</head>
+<body class="layui-padding-3">
+<div>
+<h1>后台配送数据</h1>
+</div>
+ <h1>任务进度</h1>
+ <hr>
+ 张泽宇
+<div class="layui-progress layui-progress-big" lay-showpercent="true">
+	<div class="layui-progress-bar" lay-percent="70%"></div>
+</div>
+<br>
+张竞霆
+<div class="layui-progress layui-progress-big" lay-showpercent="true">
+  <div class="layui-progress-bar" lay-percent="25%"></div>
+</div>
+<br>
+郑佳劭
+<div class="layui-progress layui-progress-big" lay-showpercent="true">
+  <div class="layui-progress-bar" lay-percent="50%"></div>
+</div>
+<br>
+徐逸豪
+<div class="layui-progress layui-progress-big" lay-showpercent="true">
+  <div class="layui-progress-bar" lay-percent="90%"></div>
+</div>
+<br>
+花俊杰
+<div class="layui-progress layui-progress-big" lay-showpercent="true">
+  <div class="layui-progress-bar" lay-percent="35%"></div>
+</div>
+<br>
+<hr>
+<div id="chart-container"></div>
+
+    <script>
+        // 初始化图表实例
+        const myChart = echarts.init(document.getElementById('chart-container'));
+        
+        // 生成初始数据
+        var data = [];
+        for (let i = 0; i < 5; ++i) {
+            data.push(Math.round(Math.random() * 200));
+        }
+
+        // 配置图表选项
+        const option = {
+            xAxis: {
+                max: 'dataMax'
+            },
+            yAxis: {
+                type: 'category',
+                data: ['张泽宇', '张竞霆', '郑佳劭', '徐逸豪', '花俊杰'],
+                inverse: true,
+                animationDuration: 300,
+                animationDurationUpdate: 300,
+                max: 4 // 只显示最大的3个柱状图
+            },
+            series: [
+                {
+                    realtimeSort: true,
+                    name: '送单量',
+                    type: 'bar',
+                    data: data,
+                    label: {
+                        show: true,
+                        position: 'right',
+                        valueAnimation: true
+                    },
+                    itemStyle: {
+                        // 为不同的柱状图设置不同的颜色
+                        color: function(params) {
+                            const colorList = ['#3366cc', '#dc3912', '#ff9900', '#109618', '#990099'];
+                            return colorList[params.dataIndex];
+                        }
+                    }
+                }
+            ],
+            legend: {
+                show: true
+            },
+            animationDuration: 3000,
+            animationDurationUpdate: 3000,
+            animationEasing: 'linear',
+            animationEasingUpdate: 'linear'
+        };
+
+        // 设置图表选项
+        myChart.setOption(option);
+
+        // 更新数据的函数
+        function update() {
+            var data = option.series[0].data;
+            for (var i = 0; i < data.length; ++i) {
+                // 90%的概率小幅度增加，10%的概率大幅度增加
+                if (Math.random() > 0.9) {
+                    data[i] += Math.round(Math.random() * 2000);
+                } else {
+                    data[i] += Math.round(Math.random() * 200);
+                }
+            }
+            myChart.setOption(option);
+        }
+
+        // 每3秒更新一次数据
+        setInterval(function() {
+            update();
+        }, 3000);
+
+        // 响应窗口大小变化，调整图表尺寸
+        window.addEventListener('resize', function() {
+            myChart.resize();
+        });
+    </script>
+<!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
+<script src="//unpkg.com/layui@2.11.6/dist/layui.js"></script>
+
+
+</body>
+</html>

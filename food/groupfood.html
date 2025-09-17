@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>菜品分类</title>
+  <link href="//unpkg.com/layui@2.11.6/dist/css/layui.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f9f7fc; /* 浅紫背景，搭配主题 */
+      padding: 25px;
+      margin: 0;
+    }
+    
+    .page-title {
+      color: #6a4c93; /* 深紫色标题，呼应渐变 */
+      font-weight: 600;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #d6bcfa;
+      font-size: 24px;
+    }
+    
+    .transfers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 28px;
+      margin-top: 30px;
+    }
+    
+    .transfer-card {
+      background: #fff;
+      border-radius: 10px; /* 圆润边角，更柔和 */
+      box-shadow: 0 3px 12px rgba(167, 139, 250, 0.15); /* 淡紫阴影，呼应主题 */
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 2px solid #e2c8f6; /* 卡片添加明显边框 */
+    }
+    
+    .transfer-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 20px rgba(167, 139, 250, 0.25); /*  hover时加深阴影 */
+      border-color: #d6b6fa; /*  hover时边框颜色加深 */
+    }
+    
+    /* 粉紫渐变标题栏 */
+    .transfer-header {
+      padding: 14px 20px;
+      background: linear-gradient(135deg, #f0c4e4, #c6b6ff); /* 粉到紫渐变 */
+      color: #5a3d8c; /* 深紫文字，保证可读性 */
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+    }
+    
+    .transfer-content {
+      padding: 18px;
+    }
+    
+    /* 优化穿梭框按钮样式，呼应主题 */
+    .layui-transfer-btn {
+      background-color: #e2c8f6 !important;
+      border-color: #d1b0f3 !important;
+      color: #6a4c93 !important;
+    }
+    
+    .layui-transfer-btn:hover {
+      background-color: #d6b6fa !important;
+      border-color: #c49eff !important;
+    }
+    
+    /* 为穿梭框内部列表添加明显边框 */
+    .layui-transfer-box {
+      border: 2px solid #e2c8f6 !important;
+      border-radius: 6px;
+    }
+    
+    /* 穿梭框标题区域底部边框 */
+    .layui-transfer-title {
+      border-bottom: 2px solid #e2c8f6 !important;
+    }
+    
+    @media (max-width: 768px) {
+      .transfers-grid {
+        grid-template-columns: 1fr;
+        gap: 22px;
+      }
+      
+      .page-title {
+        font-size: 20px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1 class="page-title">菜品分类管理</h1>
+  
+  <div class="transfers-grid">
+    <!-- 穿梭框1：凉菜 -->
+    <div class="transfer-card">
+      <div class="transfer-header">凉菜分类</div>
+      <div class="transfer-content" id="transfer-1"></div>
+    </div>
+    
+    <!-- 穿梭框2：热菜 -->
+    <div class="transfer-card">
+      <div class="transfer-header">热菜分类</div>
+      <div class="transfer-content" id="transfer-2"></div>
+    </div>
+    
+    <!-- 穿梭框3：汤品 -->
+    <div class="transfer-card">
+      <div class="transfer-header">精品菜分类</div>
+      <div class="transfer-content" id="transfer-3"></div>
+    </div>
+    
+    <!-- 穿梭框4：主食 -->
+    <div class="transfer-card">
+      <div class="transfer-header">自选菜分类</div>
+      <div class="transfer-content" id="transfer-4"></div>
+    </div>
+    
+    <!-- 穿梭框5：饮品 -->
+    <div class="transfer-card">
+      <div class="transfer-header">快餐分类</div>
+      <div class="transfer-content" id="transfer-5"></div>
+    </div>
+    
+    <!-- 穿梭框6：套餐 -->
+    <div class="transfer-card">
+      <div class="transfer-header">套餐分类</div>
+      <div class="transfer-content" id="transfer-6"></div>
+    </div>
+    
+    <!-- 新增穿梭框7：汤品 -->
+    <div class="transfer-card">
+      <div class="transfer-header">汤品分类</div>
+      <div class="transfer-content" id="transfer-7"></div>
+    </div>
+    
+    <!-- 穿梭框8：饮品 -->
+    <div class="transfer-card">
+      <div class="transfer-header">饮品分类</div>
+      <div class="transfer-content" id="transfer-8"></div>
+    </div>
+  </div>
+  
+  
+  
+  <script src="//unpkg.com/layui@2.11.6/dist/layui.js"></script>
+  <script>
+  layui.use(function(){
+    var transfer = layui.transfer;
+    // 原始数据保持不变
+    var data = [
+      {"value": "1", "title": "锅包肉"},
+      {"value": "2", "title": "土豆炖牛肉"},
+      {"value": "3", "title": "杂粮夹饼"},
+      {"value": "4", "title": "西红柿炒鸡蛋"},
+      {"value": "5", "title": "莜面丝"},
+      {"value": "6", "title": "珍珠奶茶"},
+      {"value": "7", "title": "柠檬百香果"},
+      {"value": "8", "title": "尖椒土豆丝"},
+      {"value": "9", "title": "凉拌鸡丝"},
+      {"value": "10", "title": "清蒸罗非鱼"},
+      {"value": "11", "title": "火锅"},
+      {"value": "12", "title": "孜然炒肉"},
+      {"value": "13", "title": "麻辣香锅"},
+      {"value": "14", "title": "麻辣烫"},
+      {"value": "15", "title": "麻婆豆腐"},
+      {"value": "16", "title": "红烧排骨"},
+      {"value": "17", "title": "1人工作餐"},
+      {"value": "18", "title": "6人家庭聚餐"},
+	  {"value": "19", "title": "枸杞鸡汤"},
+	  {"value": "20", "title": "土豆炖排骨汤"},
+    ];
+    
+    // 八个分类的标题，新增了汤品分类
+    var categories = [
+      ['全部菜品', '凉菜'],
+      ['全部菜品', '热菜'],
+      ['全部菜品', '精品菜'],
+      ['全部菜品', '自选菜'],
+      ['全部菜品', '快餐'],
+      ['全部菜品', '套餐'],
+      ['全部菜品', '汤品'],  // 新增的汤品分类
+      ['全部菜品', '饮品']
+    ];
+    
+    // 渲染八个穿梭框 - 已移除搜索功能
+    categories.forEach(function(title, index) {
+      transfer.render({
+        elem: '#transfer-' + (index + 1),
+        title: title,
+        data: data,
+        height: 280,
+        showSearch: false,  // 关闭搜索功能
+      });
+    });
+  });
+  </script>
+</body>
+</html>

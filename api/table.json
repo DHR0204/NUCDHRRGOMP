@@ -1,0 +1,97 @@
+{
+  "code": 0,
+  "msg": "",
+  "count": 1000,
+  "data": [
+    {
+      "id": "张泽宇",
+      "username":"服务部",
+      "sex": "男",
+      "city": "纽约",
+      "sign": "13546210912",
+      "experience": 255
+      
+    },
+    {
+      "id": "徐逸豪",
+      "username": "财务部",
+      "sex": "男",
+      "city": "陵川县",
+      "sign": "15494518451",
+      "experience": 884
+      
+    },
+    {
+      "id": "花俊杰",
+      "username": "管理部",
+      "sex": "男",
+      "city": "大同市",
+      "sign": "19955428286",
+      "experience": 650
+      
+    },
+    {
+      "id": "柴钰坤",
+      "username": "服务部",
+      "sex": "男",
+      "city": "运城市",
+      "sign": "15998425195",
+      "experience": 362
+      
+    },
+    {
+      "id": "孙康凯",
+      "username": "管理部",
+      "sex": "男",
+      "city": "运城市",
+      "sign": "19524651598",
+      "experience": 807
+      
+    },
+    {
+      "id": "贾烨吉",
+      "username": "财务部",
+      "sex": "男",
+      "city": "太原市",
+      "sign": "15364845698",
+      "experience": 173
+      
+    },
+    {
+      "id": "郑佳邵",
+      "username": "技术部",
+      "sex": "女",
+      "city": "广州市",
+      "sign": "15118628195",
+      "experience": 982
+     
+    },
+    {
+      "id": "张竞霆",
+      "username": "服务部",
+      "sex": "男",
+      "city": "徐州市",
+      "sign": "15295946649",
+      "experience": 727
+     
+    },
+    {
+      "id": "尹一然",
+      "username": "技术部",
+      "sex": "女",
+      "city": "长春市",
+      "sign": "17758955846",
+      "experience": 951
+      
+    },
+    {
+      "id": "杨李昊",
+      "username": "管理部",
+      "sex": "男",
+      "city": "太原市",
+      "sign": "18956846284",
+      "experience": 484
+      
+    }
+  ]
+}

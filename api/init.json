@@ -1,0 +1,163 @@
+{
+  "homeInfo": {
+    "title": "首页",
+    "href": "page/home.html"
+  },
+  "logoInfo": {
+    "title": "RGOMP",
+    "image": "images/VCT.png",
+    "href": ""
+  },
+  "menuInfo": [
+    {
+      "title": "常规管理",
+      "icon": "fa fa-address-book",
+      "href": "",
+      "target": "_self",
+      "child": [
+        {
+          "title": "首页",
+          "href": "page/home.html",
+          "icon": "fa fa-home",
+          "target": "_self"
+        },
+        {
+          "title": "用户管理",
+          "href": "",
+          "icon": "fa fa-group",
+          "target": "_self",
+          "child": [
+          {
+            "title": "添加用户",
+            "href": "user/addUser.html",
+            "icon": "fa fa-plus-square-o",
+            "target": "_self"
+          }, {
+            "title": "查询用户",
+            "href": "user/findUser.html",
+            "icon": "fa fa-search",
+            "target": "_self"
+          },
+		  {
+		    "title": "修改用户",
+		    "href": "user/changeUser.html",
+		    "icon": "fa fa-search",
+		    "target": "_self"
+		  }
+		  
+        ]
+        },
+        {
+          "title": "餐厅管理",
+          "href": "",
+          "icon": "fa fa-institution",
+          "target": "_self",
+          "child": [
+            {
+              "title": "添加餐厅",
+              "href": "restaurant/addrest.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            }, {
+              "title": "查询餐厅",
+              "href": "restaurant/findrest.html",
+              "icon": "fa fa-plus-circle",
+              "target": "_self"
+            }, {
+              "title": "修改餐厅",
+              "href": "restaurant/changerest.html",
+              "icon": "fa fa-search",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "菜单管理",
+          "href": "",
+          "icon": "fa fa-male",
+          "target": "_self",
+          "child": [
+            {
+              "title": "添加菜品",
+              "href": "food/addfood.html",
+              "icon": "fa fa-plus-circle",
+              "target": "_self"
+            }, {
+              "title": "菜品分类",
+              "href": "food/groupfood.html",
+              "icon": "fa fa-search-plus",
+              "target": "_self"
+            }, {
+              "title": "库存管理",
+              "href": "food/managefood.html",
+              "icon": "fa fa-bar-chart",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "订单管理",
+          "href": "",
+          "icon": "fa fa-trophy",
+          "target": "_self",
+          "child": [
+            {
+              "title": "订单情况追踪",
+              "href": "order/orStatus.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            }, {
+              "title": "售后反馈",
+              "href": "order/Afterservice.html",
+              "icon": "fa fa-search",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "配送管理",
+          "href": "",
+          "icon": "fa fa-paw",
+          "target": "_self",
+          "child": [
+            {
+              "title": "添加配送员信息",
+              "href": "distribution/addDelivery.html",
+              "icon": "fa fa-plus-circle",
+              "target": "_self"
+            }, {
+              "title": "查询配送员信息",
+              "href": "distribution/changeDelivery.html",
+              "icon": "fa fa-search-plus",
+              "target": "_self"
+            }, {
+              "title": "配送数据",
+              "href": "distribution/dataDelivery.html",
+              "icon": "fa fa-bar-chart",
+              "target": "_self"
+            }
+          ]
+        },
+        {
+          "title": "系统管理",
+          "href": "",
+          "icon": "fa fa-eye",
+          "target": "_self",
+          "child": [
+            {
+              "title": "系统参数",
+              "href": "system/parameter.html",
+              "icon": "fa fa-plus-square-o",
+              "target": "_self"
+            }, {
+              "title": "数据统计",
+              "href": "system/count.html",
+              "icon": "fa fa-search",
+              "target": "_self"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

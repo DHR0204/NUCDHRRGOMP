@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Demo</title>
+  <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+  <link href="//unpkg.com/layui@2.11.6/dist/css/layui.css" rel="stylesheet">
+</head>
+<body class="layui-padding-3">
+
+
+<h1>订单跟踪</h1>
+<table class="layui-table" lay-data="{url:'../api/table4.json', cellMinWidth: 80, page: true}" id="ID-table-demo-theads-2">
+  <thead>
+    <tr>
+      <th lay-data="{field:'username', fixed:'left', width:80}" rowspan="3">联系人</th>
+      <th lay-data="{field:'amount'}" rowspan="3">订单总额</th>
+      <th lay-data="{align:'center'}" colspan="5">地址</th>
+      <th lay-data="{field:'date'}" rowspan="3">订单创建日期</th>
+      <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#templet-demo-theads-tool'}" rowspan="3">操作</th>
+    </tr>
+    <tr>
+      <th lay-data="{field:'province'}" rowspan="2">省</th>
+      <th lay-data="{field:'city'}" rowspan="2">市</th>
+      <th lay-data="{align:'center'}" colspan="3">详细</th>
+     
+    </tr>
+    <tr>
+      <th lay-data="{field:'street'}" rowspan="2">街道</th>
+      <th lay-data="{field:'address'}">小区</th>
+      <th lay-data="{field:'house'}">单元</th>
+    </tr>
+  </thead>
+</table>
+<script type="text/html" id="templet-demo-theads-tool">
+  <div class="layui-clear-space">
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看跟踪</a>
+    <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="edit">修改</a>
+  </div>
+</script>
+  
+<!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
+<script src="//unpkg.com/layui@2.11.6/dist/layui.js"></script>
+
+
+</body>
+</html>

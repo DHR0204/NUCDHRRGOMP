@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>参数设置</title>
+  <!-- 请勿在项目正式环境中引用该 layui.css 地址 -->
+  <link href="//unpkg.com/layui@2.11.6/dist/css/layui.css" rel="stylesheet">
+  <style>
+    /* 更华丽的粉紫渐变背景，添加纹理效果 */
+    body {
+      /* 主渐变背景 */
+      background: linear-gradient(135deg, #ffc0cb 0%, #e6e6fa 50%, #d8bfd8 100%);
+      /* 叠加细微纹理 */
+      background-image: 
+        radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px),
+        radial-gradient(rgba(255, 255, 255, 0.1) 2px, transparent 2px);
+      background-size: 40px 40px;
+      background-position: 0 0, 20px 20px;
+      /* 背景固定 */
+      background-attachment: fixed;
+      /* 确保覆盖整个视口 */
+      min-height: 100vh;
+      /* 添加柔和阴影边框效果 */
+      box-shadow: inset 0 0 150px rgba(128, 0, 128, 0.2);
+    }
+    
+    /* 增强标题视觉效果 */
+    h1 {
+      color: #800080;
+      text-shadow: 
+        0 2px 4px rgba(255, 255, 255, 0.8),
+        0 0 20px rgba(255, 192, 203, 0.6);
+      font-size: 2.5rem;
+      letter-spacing: 0.05em;
+      padding: 15px 0;
+    }
+    
+    h2 {
+      color: #6a0dad;
+      text-shadow: 
+        0 1px 2px rgba(255, 255, 255, 0.7),
+        0 0 10px rgba(216, 184, 232, 0.5);
+      letter-spacing: 0.03em;
+    }
+    
+    /* 美化分隔线 */
+    hr {
+      border: none;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #d8bfd8, transparent);
+      margin: 25px 0;
+    }
+    
+    /* 滑块容器美化 */
+    #platform-fee-slider, #delivery-fee-slider {
+      background-color: rgba(255, 255, 255, 0.3);
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 3px 10px rgba(106, 13, 173, 0.1);
+    }
+  </style>
+</head>
+<body class="layui-padding-3">
+<h1>参数设置</h1>
+<br>
+<br>
+<br>
+<hr>
+<h2>平台抽成</h2>
+<div id="platform-fee-slider" class="layui-margin-bottom-30"></div>
+  
+<hr>
+<h2>配送费比例</h2>
+<div id="delivery-fee-slider"></div>
+  
+<!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
+<script src="//unpkg.com/layui@2.11.6/dist/layui.js"></script>
+<script>
+layui.use(function(){
+  var slider = layui.slider;
+  
+  // 平台抽成滑块
+  slider.render({
+    elem: '#platform-fee-slider',
+    input: true, // 显示输入框
+    min: 0,      // 最小值
+    max: 100,    // 最大值
+    step: 0.1,   // 步长
+    value: 10,   // 默认值
+    unit: '%'    // 单位
+  });
+  
+  // 配送费比例滑块
+  slider.render({
+    elem: '#delivery-fee-slider',
+    input: true, // 显示输入框
+    min: 0,      // 最小值
+    max: 100,    // 最大值
+    step: 0.1,   // 步长
+    value: 15,   // 默认值
+    unit: '%'    // 单位
+  });
+});
+</script>
+</body>
+</html>
